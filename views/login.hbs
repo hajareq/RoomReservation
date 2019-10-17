@@ -1,0 +1,51 @@
+{{> head}}
+<body>
+
+
+      <!-- Login page. -->
+      <div class="container login-container">
+          <div class="center row">
+              <div>
+                  <img alt="MyTasks" src="img/DXC.png"  >
+              </div>
+          </div>
+          <br/>
+          <form class="form-horizontal" role="form" method="post" action="/login">
+
+              <div class="form-group text-center">
+                  <span><strong>ServiceNow User Authentification </strong>(Instance: https://dev64642.service-now.com)</span>
+              </div>
+
+              <div class="form-group">
+                  <input type="text" class="form-control" ng-model="userName" name="username" required placeholder="Username">
+              </div>
+
+              <div class="form-group">
+                  <input type="password" class="form-control" ng-model="password" required name="password" placeholder="Password">
+              </div>
+
+              <div class="form-group">
+                  <input class="btn btn-primary wide" type="submit" value='login'/>
+              </div>
+
+              <!-- display login related error messages -->
+              {{#if errorMessage}}
+              <div class="form-group">
+                  <div  class="alert alert-danger" role="alert">
+                      {{errorMessage}}
+                  </div>
+              </div>
+              {{/if}}
+
+              {{#if message}}
+              <div class="form-group">
+                  <div  class="alert alert-success" role="alert">
+                      {{message}}
+                  </div>
+              </div>
+              {{/if}}
+      </div>
+
+</body>
+
+</html>

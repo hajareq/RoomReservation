@@ -1,0 +1,94 @@
+{{> head}}
+<body>
+  <nav class="navbar navbar-default">
+      <div class="container-fluid">
+          <div class="navbar-header">
+
+          </div>
+          <div class="navbar-header" style="margin:5px">
+              <h5><strong>Bienvenue {{username}}</strong></h5>
+          </div>
+          <div class="nav navbar-nav navbar-right" style="margin:5px">
+              <form method="get" role="form" action="/logout">
+                <input class="btn btn-default" type="submit" value="logout"/>
+              </form>
+          </div>
+      </div>
+  </nav>
+  <div class="container">
+      <div class="row">
+        <div class="col-sm-12 col-md-12 col-lg-12">
+          <h1 class="center">Formulaire de réservation d'une salle de réunion au sein de DXC Technology</h1>
+        </div>
+      </div>
+      {{#if errorMessage}}
+      <div class="row">
+        <div class="col-sm-12 col-md-12 col-lg-12">
+          <div class="alert alert-danger">{{errorMessage}}</div>
+        </div>
+      </div>
+      {{/if}}
+      <div class="row">
+          <div class='col-sm-12 col-md-12 col-lg-12'>
+            <!--<form class="form-horizontal center" role="form" style="margin-top: 50px;">
+              <div class="form-group">
+                  <label for="datepicker">Sélectionner une date</label>
+                  <input class="form-control" id='datepicker'>
+              </div>
+            </form>-->
+              <form method="post" class="form-horizontal" action="/reserve">
+                  <div class="form-group">
+                    <label for="exampleFormControlSelect1">Type de réservation</label>
+                    <select class="form-control" id="exampleFormControlSelect1">
+                      <option value="integration">Integration</option>
+                      <option value="formation">Formation</option>
+                      <option value="reunion">Réunion</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label for="datepicker">Date de réservation</label>
+                    <input required type="date" class="form-control" id='datepicker'>
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleFormControlSelect2">Durée de la réservation (en Heures)</label>
+                    <input type="number" required name="delay" class="form-control" id="exampleFormControlSelect2"/>
+                  </div>
+                  <div class="form-group">
+                      <label for="capacity">Capacité</label>
+                      <input id="capacity" type="text" class="form-control" readonly {{#if capacity}} value="{{capacity}}" {{/if}}/>
+                  </div>
+                  <div class="form-group">
+                    <label for="location">Emplacement souhaité</label>
+                    <select class="form-control" id="location">
+                      <option value="Technopolis">DXC Technology: Technopolis</option>
+                      <option value="HayRiad">DXC Technology: Hay Riad</option>
+                      <option value="Casablanca">DXC Technology: Casablanca</option>
+                    </select>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="salle">Séléctionner une salle</label>
+                    <select class="form-control" id="salle">
+                      {{#if rooms}}
+                      {{#each rooms}}
+                          <option value={{this.id}}>{{this.name}}</option>
+                      {{/each}}
+                      {{/if}}
+                    </select>
+                  </div>
+                  <div class="form-group">
+                      <label for="floornum">Numéro d'étage</label>
+                      <input id="floornum" type="text" class="form-control" readonly {{#if floornum}} value="{{floornum}}" {{/if}}/>
+                  </div>
+                  <input type="submit" value="Réserver" class="btn btn-primary wide" />
+                </form>
+          </div>
+      </div>
+  </div>
+
+  <!--<script>
+      $('#datepicker').datepicker();
+  </script>-->
+</body>
+
+</html>
